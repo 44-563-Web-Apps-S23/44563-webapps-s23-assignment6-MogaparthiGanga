@@ -40,5 +40,28 @@ function checkPainter(){
 }
 </script>
 
+<div>
+    <img src="rose.jpg" alt="Rose Plant" height="100" width="100" onclick="selectImage()" id="image">
+<script>
+    var useImage = 1;
+    function selectImage(){
+        switch(useImage){
+            case 1:
+                document.getElementById("image").src="olea.jpg";
+                useImage = useImage + 1;
+                break;
+            case 2:
+                document.getElementById("image").src="gallium.jpg";
+                useImage = useImage + 1;
+                break;
+            case 3:
+                document.getElementById("image").src="rose.jpg";
+                useImage = useImage + 1
+                break
+        }
+    }
+</script>
+</div>
+
 </body>
 </html> 
