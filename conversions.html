@@ -23,15 +23,43 @@
 
 <p id="result">This text will be replaced </p>
 
-<script> 
+<!-- <script> 
+    function convert (){
+        console.log("Getting currency values")
+        baseAmount = document.getElementById("baseamount").value
+        rate = document.getElementById("rate").value
+        var toShow =""; 
+        var multiply = 1;
+        for(var i=0;i<5;i++)
+        {
+            let result = multiply*baseAmount*rate;
+            result = Math.round(result*10)/10;
+            toShow += " "+baseAmount+" is "+result+";"
+            baseAmount = baseAmount * 2;
+        }
+        document.getElementById("result").innerHTML="Conversions are :"+toShow
+    }
+</script> -->
 
+<form>
+    <input type="radio" id="button1" name="color" value="mean" checked onclick="chooseOp()">
+    <label for="button1">average</label><br>
+    <input type="radio" id="button2" name="color" value="maximum" onclick="chooseOp()">
+    <label for="button2">max</label><br>
+    <input type="radio" id="button3" name="color" value="minimum" onclick="chooseOp()">
+    <label for="button3">min</label><br>
+</form>
+
+<p id="results">This text will be replaced </p>
+
+<script>
 function convert (){
     console.log("Getting currency values")
     baseAmount = document.getElementById("baseamount").value
     rate = document.getElementById("rate").value
     var toShow =""; 
     var multiply = 1;
-    for(var i=0;i<5;i++)
+    for(let i=0;i<5;i++)
     {
         let result = multiply*baseAmount*rate;
         result = Math.round(result*10)/10;
@@ -39,9 +67,42 @@ function convert (){
         baseAmount = baseAmount * 2;
     }
     document.getElementById("result").innerHTML="Conversions are :"+toShow
+}
 
+function chooseOp(){
+    let baseAmount = parseFloat(document.getElementById("baseamount").value);
+    let rate = parseFloat(document.getElementById("rate").value);
+    let tmp="";
+    tmp=document.getElementsByName("color");
+    let checkedValue = "";
+    for(let i = 0;i <= 2;i++)
+    {
+        if(tmp[i].checked){
+            checkedValue = tmp[i].value;
+        }
+    }
+    switch(checkedValue){
+        case "minumum":
+            if(baseAmount<rate){
+                document.getElementById("results").innerHTML="minimum of "+baseAmount+" and "+rate+" is "+baseAmount;
+            }
+            else{
+                document.getElementById("results").innerHTML="minimum of "+baseAmount+" and "+rate+" is "+rate;
+            } 
+            break; 
+            case "maximum":
+            if(baseAmount>rate){
+                document.getElementById("results").innerHTML="maximum of "+baseAmount+" and "+rate+" is "+baseAmount;
+            }
+            else{
+                document.getElementById("results").innerHTML="maximum of "+baseAmount+" and "+rate+" is "+rate;
+            } 
+            break; 
+            case "mean":
+                document.getElementById("results").innerHTML="mean of "+baseAmount+" and "+rate+" is "+(baseAmount+rate)/2;
+            break;                       
+    }
 }
 </script>
-
 </body>
 </html> 
