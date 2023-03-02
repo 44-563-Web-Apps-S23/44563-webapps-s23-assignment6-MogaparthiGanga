@@ -19,10 +19,14 @@
 
 
 <p id="result">This text will be replaced </p>
+<div>
+    <img src="rose.jpg" alt="Rose Plant" height="100" width="100" onclick="selectImage()" id="image">
+</div>
 
 <script> 
 var good = 0
 var oops = 0
+var count = 0
 function checkPainter(){
     password = document.getElementById("form1_pwd").value
     guessPassword = document.getElementById("form1_painter").value
@@ -33,16 +37,22 @@ function checkPainter(){
         alert("You got it right")
         document.getElementById("result").innerHTML=good
     } else {
-        oops += 1
-        alert("Sorry")
-        document.getElementById("result").innerHTML=oops
+        count += 1
+        if (count > 10)
+        {
+            document.getElementById('btn').onclick=display()
+        }
+        else
+        {
+            oops += 1
+            alert("Sorry")
+            document.getElementById("result").innerHTML=oops
+        }
     }
 }
-</script>
-
-<div>
-    <img src="rose.jpg" alt="Rose Plant" height="100" width="100" onclick="selectImage()" id="image">
-<script>
+function display(){
+    alert("Sorry, ran out of guesses.")
+}
     var useImage = 1;
     function selectImage(){
         switch(useImage){
@@ -61,7 +71,7 @@ function checkPainter(){
         }
     }
 </script>
-</div>
+
 
 </body>
 </html> 
