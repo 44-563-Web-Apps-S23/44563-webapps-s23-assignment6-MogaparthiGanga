@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        CheckBoxesAssignment6
+    </title>
+</head>
+ 
+<body>
+
+<h2>Mogaparthi Ganga Prasanna chooses candy</h2>
+
+<form>
+    <label for="form1_age">Dark Chocolate</label>
+    <input type ="checkbox" id="label1" name="form1_age" min=10 max=50 step=2 value=True> <br>
+
+    <label for="form1_nick">Nuts</label>
+    <input type ="checkbox" id="label2" name="form1_age" min=10 max=50 step=2 value=True><br>
+
+    <label for="form1_nick">Chewy</label>
+    <input type ="checkbox" id="label3" name="form1_age" min=10 max=50 step=2 value=False><br>
+
+    <input type="button" onclick="selectBox()" value="Select a box ">
+</form>
+
+<form>
+    <label for="form1_size">Enter the size</label>
+    <input type ="text" id="form1_size" name="form1_size" min=10 max=50 step=2 value="size"> <br>
+
+    <label for="form1_price">Enter price</label>
+    <input type ="text" id="form1_price" name="form1_price" autofocus> <br>
+
+    <input type="button" onclick="updateBox()" value="Update the box">  
+</form>
+
+
+<p id="result">This text will be replaced </p>
+
+<script> 
+    var my_candy_box = {};
+    function selectBox (){
+    my_candy_box ={};
+    let box1 = document.getElementById("label1").checked;
+    let box2 = document.getElementById("label2").checked;
+    let box3 = document.getElementById("label3").checked;
+    if(box1){
+        my_candy_box.dark="True";
+    }
+    else{
+        my_candy_box.dark="False";
+    }
+
+    if(box2){
+        my_candy_box.nuts="True";
+    }
+    else{
+        my_candy_box.nuts="False";
+    }
+
+    if(box3){
+        my_candy_box.chewy="True";
+    }
+    else{
+        my_candy_box.chewy="False";
+    }
+
+    document.getElementById("result").innerHTML=JSON.stringify(my_candy_box);
+
+}
+function updateBox(){
+    my_candy_box.size = document.getElementById("form1_size").value;
+    my_candy_box.price = document.getElementById("form1_price").value;
+    document.getElementById("result").innerHTML=JSON.stringify(my_candy_box);
+
+}
+
+
+</script>
+
+</body>
+</html> 
