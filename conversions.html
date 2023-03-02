@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        LoopingComputationAssignment6
+    </title>
+</head>
+ 
+<body>
+
+<h2>Ganga Prasanna Mogaparthi shows currency conversions</h2>
+
+<form>
+    <label for="form1_baseamount">Enter base amount</label>
+    <input type ="number" id="baseamount" name="form1_baseamount" min=10 max=50 step=2 value=50> <br>
+
+    <label for="form1_conversionrate">Enter the conversion rate</label>
+    <input type ="number" id="rate" name="form1_conversionrate" min=10 max=50 step=2 value=35> <br>
+
+    <input type="button" onclick="convert()" value="Show conversions ">
+</form>
+
+
+<p id="result">This text will be replaced </p>
+
+<script> 
+
+function convert (){
+    console.log("Getting currency values")
+    baseAmount = document.getElementById("baseamount").value
+    rate = document.getElementById("rate").value
+    var toShow =""; 
+    var multiply = 1;
+    for(var i=0;i<5;i++)
+    {
+        let result = multiply*baseAmount*rate;
+        result = Math.round(result*10)/10;
+        toShow += " "+baseAmount+" is "+result+";"
+        baseAmount = baseAmount * 2;
+    }
+    document.getElementById("result").innerHTML="Conversions are :"+toShow
+
+}
+</script>
+
+</body>
+</html> 
